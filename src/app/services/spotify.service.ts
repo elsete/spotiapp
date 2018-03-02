@@ -5,7 +5,17 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class SpotifyService {
 
-  private token = 'BQAie73vZ2r19MfJkK5M7OyrW1-_U18kSoHaCvpR75XCEzVflWY0neIsx-V3WOHwlQ3ylWyL3Dow7JQS7DQ';
+    /* POSTMAN generar TOKEN
+
+    POST: https://accounts.spotify.com/api/token
+
+    //x-www-form-urlencoded
+    [{"key":"grant_type","value":"client_credentials","description":"","type":"text","enabled":true},{"key":"client_id","value":"41b7768b24384bdcb47c627d428128f1","description":"","type":"text","enabled":true},{"key":"client_secret","value":"de9d61cf19e8469f85942798b8c9d84c","description":"","type":"text","enabled":true}]
+
+    */
+
+
+  private token = 'BQCsSUltI1Tmcp7NEJ0rYBh3kJJpV7QJFyY1G9w0e1IynBI7qxUc6rs-qJd15VBGM3qzTxS_gpu0sI07a3c';
   public artistas: any[] = [];
 
   constructor(public http: HttpClient) {

@@ -11,6 +11,7 @@ import { SpotifyService } from './services/spotify.service';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { SinfotoPipe } from './pipes/sinfoto.pipe';
+import { ArtistComponent } from './components/artist/artist.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { SinfotoPipe } from './pipes/sinfoto.pipe';
     HomeComponent,
     SearchComponent,
     NavbarComponent,
-    SinfotoPipe
+    SinfotoPipe,
+    ArtistComponent
   ],
   imports: [
     BrowserModule,
