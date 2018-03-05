@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SpotifyService } from '../../services/spotify.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-search',
@@ -7,12 +8,22 @@ import { SpotifyService } from '../../services/spotify.service';
   styles: []
 })
 
-export class SearchComponent {
+export class SearchComponent implements OnInit {
 
   public termino: string = '';
   public minLength: number = 2;
 
-  constructor(public _spotify: SpotifyService) {  }
+  constructor(private activatedRoute: ActivatedRoute,
+              public _spotify: SpotifyService) {  }
+
+  ngOnInit(): void {
+    this.activatedRoute.params
+    .map(params => params['termino'])
+          .subscribe(termino => {
+              this.termino = termino;
+              this.buscarArtista();
+          });
+  }
 
   buscarArtista() {
     if (this.termino.length >= this.minLength) {

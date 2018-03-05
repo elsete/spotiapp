@@ -1,3 +1,38 @@
-<p>
-  {{ artista.name }}
-</p>
+<div class="container top30">
+  <div class="row">
+
+    <div class="col-md-3 top-30">
+        <img [src]="artista.images | sinfoto " class="img-thumbnail img-circle">
+    </div>
+
+    <div class="col-md-9">
+        <h1>{{ artista.name }}</h1>
+        <hr>
+
+        <button type="button"
+        class="btn btn-outline-success">Abrir en Spotify</button>
+
+        <button type="button"
+        [routerLink]="['/search',this.termino]"
+        class="btn btn-outline-danger">Volver</button>
+
+    </div>
+
+  </div>
+
+  <br>
+
+  <table class="table table-hover table-dark">
+      <tbody>
+        <tr *ngFor="let cancion of this.canciones">
+          <th scope="row">
+            <img [src]="cancion.album.images | sinfoto" class="img-thumbnail" width="100px"></th>
+          <td><p>{{ cancion.name }}</p></td>
+        </tr>
+      </tbody>
+    </table>
+
+
+</div>
+
+
