@@ -20,7 +20,7 @@
 
           <div *ngFor="let artista of this._spotify.artistas"
                 class="col-md-3 text-center puntero"
-                [routerLink]="['artist', artista.id]">
+                [routerLink]="['/artist', artista.id]">
 
                 <img [src]="artista.images | sinfoto"
                     class="img-thumbnail">

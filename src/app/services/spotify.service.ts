@@ -15,7 +15,7 @@ export class SpotifyService {
     */
 
 
-  private token = 'BQCsSUltI1Tmcp7NEJ0rYBh3kJJpV7QJFyY1G9w0e1IynBI7qxUc6rs-qJd15VBGM3qzTxS_gpu0sI07a3c';
+  private token = 'BQBIdYI5bVEGZhYmcMOzyvVBXWcLYtut3yRqwjbvmAz8AqBLwciIS7c-q1p5t9oNim_QPP2pO5FyRg0VjZk';
   public artistas: any[] = [];
 
   constructor(public http: HttpClient) {
