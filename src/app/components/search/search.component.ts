@@ -16,10 +16,7 @@ export class SearchComponent {
 
   buscarArtista() {
     if (this.termino.length >= this.minLength) {
-      this._spotify.getArtistas(this.termino)
-        .subscribe(artistas => {
-          console.log(artistas);
-        });
+      this._spotify.getArtistas(this.termino).subscribe();
     }
   }
 }

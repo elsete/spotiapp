@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import 'rxjs/add/operator/map';
+import { headersToString } from 'selenium-webdriver/http';
 
 @Injectable()
 export class SpotifyService {
@@ -16,19 +17,32 @@ export class SpotifyService {
 
 
   private token = 'BQBIdYI5bVEGZhYmcMOzyvVBXWcLYtut3yRqwjbvmAz8AqBLwciIS7c-q1p5t9oNim_QPP2pO5FyRg0VjZk';
+  private urlSpotify = 'https://api.spotify.com/v1/';
   public artistas: any[] = [];
 
   constructor(public http: HttpClient) {
     console.log('Servicio de Spotify');
    }
 
-   getArtistas(termino: string){
-      const URL = `https://api.spotify.com/v1/search?query=${ termino }&type=artist&market=ES&limit=20`;
-      const HEADERS = new HttpHeaders({
-        'authorization' : `Bearer ${this.token}`
-      });
+   private getHeaders(): HttpHeaders {
+    const HEADERS = new HttpHeaders({
+      'authorization' : `Bearer ${this.token}`
+    });
 
-      return this.http.get(URL, { headers: HEADERS })
+    return HEADERS;
+   }
+
+   getArtista(id: string) {
+     const URL = `${ this.urlSpotify }artists/${ id }`;
+
+     return this.http.get(URL, { headers: this.getHeaders() });
+
+   }
+
+   getArtistas(termino: string){
+      const URL = `${ this.urlSpotify }search?query=${ termino }&type=artist&market=ES&limit=20`;
+
+      return this.http.get(URL, { headers: this.getHeaders() })
           .map( (resp: any) => {
               this.artistas = resp.artists.items;
 
