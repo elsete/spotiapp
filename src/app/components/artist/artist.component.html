@@ -45,10 +45,12 @@
             <td>{{ cancion.name }}</td>
             <td>{{ cancion.popularity }}%</td>
             <td>
-              <audio controls>
-                <source [src]="cancion.preview_url">
-                El navegador no soporta la funcionalidad Escuchar
-              </audio>
+              <iframe
+                [src]="cancion.uri | domseguro :'https://open.spotify.com/embed?uri='"
+                width="300"
+                height="80"
+                frameborder="0"
+                allowtransparency="true"></iframe>
             </td>
           </tr>
         </tbody>
