@@ -16,7 +16,7 @@ export class SpotifyService {
     */
 
 
-  private token = 'BQDfS1TP5op6RgFcfC9f5p0YvZb0AV7HHEENvwCcdGLOhDW07IFI_LYQ5m2i2RVrZFZcabDA6RULarb01DA';
+  private token = 'BQCtAOkSEEIukkfOxOmqTTedpuZo4WeBgvt5u6uUnSor7g3XvioinKHGdHRVDxV9-WwSjx6LvRmO_5-G5sw';
   private urlSpotify = 'https://api.spotify.com/v1/';
   public artistas: any[] = [];
 

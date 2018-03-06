@@ -1,37 +1,62 @@
 <div class="container top30">
+
   <div class="row">
 
-    <div class="col-md-3 top-30">
+    <div class="col-md-3">
         <img [src]="artista.images | sinfoto " class="img-thumbnail img-circle">
     </div>
 
     <div class="col-md-9">
+
         <h1>{{ artista.name }}</h1>
         <hr>
 
-        <button type="button"
-        class="btn btn-outline-success">Abrir en Spotify</button>
+        <a [href]="artista.external_urls?.spotify" target="blank"
+          class="btn btn-outline-success">Abrir en Spotify</a>
 
         <button type="button"
-        [routerLink]="['/search',this.termino]"
-        class="btn btn-outline-danger">Volver</button>
+          [routerLink]="['/search',this.termino]"
+          class="btn btn-outline-danger">Volver</button>
 
     </div>
 
   </div>
 
-  <br>
+  <div class="row top30">
 
-  <table class="table table-hover table-dark">
-      <tbody>
-        <tr *ngFor="let cancion of this.canciones">
-          <th scope="row">
-            <img [src]="cancion.album.images | sinfoto" class="img-thumbnail" width="100px"></th>
-          <td><p>{{ cancion.name }}</p></td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="col-md-12">
 
+      <table class="table table-hover table-dark">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Foto</th>
+            <th>Nombre</th>
+            <th>Popularidad</th>
+            <th>Escuchar</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let cancion of this.canciones; let i = index">
+            <td scope="row">{{ i + 1 }}</td>
+            <td>
+              <img [src]="cancion.album.images | sinfoto" class="img-50" width="100px">
+            </td>
+            <td>{{ cancion.name }}</td>
+            <td>{{ cancion.popularity }}%</td>
+            <td>
+              <audio controls>
+                <source [src]="cancion.preview_url">
+                El navegador no soporta la funcionalidad Escuchar
+              </audio>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+
+  </div>
 
 </div>
 
